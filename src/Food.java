@@ -19,7 +19,7 @@ public class Food {
 	}
 	
 	public void printInfo() {
-		System.out.println("음식이름 :"+name+"음식번호:"+ number+  "양:"+amount+ "날짜:"+ date+"유통기한:"+experation);
+		System.out.println("음식이름 :"+name+" 음식번호:"+ number+  "번 양:"+amount+ "개 날짜:"+ date+"일 유통기한:"+experation);
 	}
 }	
 

@@ -5,9 +5,9 @@ public class RefrigeratorManagemetSystemMenu {
 	public static void main(String[] args) {
 		Scanner input = new Scanner(System.in);
 		FoodManager foodManager = new FoodManager(input);
-		int i = 5;
+		int i = -1;
 		
-		while (i != 6) {
+		while (i != 5) {
 			System.out.println("Refrigerator Managemet System Menu");
 			System.out.println("1. Add food");
 			System.out.println("2. Delete food");
