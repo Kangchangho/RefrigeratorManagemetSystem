@@ -26,7 +26,7 @@ public class RefrigeratorManagemetSystemMenu {
 				foodManager.editfood();
 			}	
 			else if (i == 4) {
-				foodManager.veiwfood();
+				foodManager.veiwfoods();
 			}	
 			else
 				continue;
