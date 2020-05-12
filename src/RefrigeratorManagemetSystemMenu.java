@@ -8,30 +8,34 @@ public class RefrigeratorManagemetSystemMenu {
 		int i = -1;
 		
 		while (i != 5) {
-			System.out.println("Refrigerator Managemet System Menu");
-			System.out.println("1. Add food");
-			System.out.println("2. Delete food");
-			System.out.println("3. Edit food");
-			System.out.println("4. Veiw food");
-			System.out.println("5. Exit");
-			System.out.println("Select one number between 1 - 5");
+			showMenu();
 			i = input.nextInt();
-			if (i == 1) {
+			switch(i) {
+			case 1:
 				foodManager.addfood();
-			}	
-			else if (i == 2) {
+				break;
+			case 2:
 				foodManager.deletefood();
-			}	
-			else if (i == 3) {
+				break;
+			case 3:
 				foodManager.editfood();
-			}	
-			else if (i == 4) {
+				break;
+			case 4:
 				foodManager.veiwfoods();
-			}	
-			else
+				break;	
+			default:
 				continue;
-		}	
+			}
+		}
 	}
-	
+	public static void showMenu() {
+		System.out.println("Refrigerator Managemet System Menu");
+		System.out.println("1. Add food");
+		System.out.println("2. Delete food");
+		System.out.println("3. Edit food");
+		System.out.println("4. Veiw food");
+		System.out.println("5. Exit");
+		System.out.println("Select one number between 1 - 5");
+	}
 }	
 	

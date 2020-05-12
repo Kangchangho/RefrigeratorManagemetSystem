@@ -2,9 +2,9 @@ package Food;
 
 import java.util.Scanner;
 
-public class Food {
+public abstract class Food {
 	
-	protected FoodKind Kind = FoodKind.Drink;
+	protected FoodKind kind = FoodKind.Soup;
 	protected String name;
 	protected int number;
 	protected String amount;
@@ -13,8 +13,12 @@ public class Food {
 	
 	public Food() {
 	}
+	public Food(FoodKind kind) {
+		this.kind = kind;
+	}
 	
-	public Food(String name,int number,String amount, String date,String experation ) {
+	public Food(FoodKind kind,String name,int number,String amount, String date,String experation ) {
+		this.kind = kind;
 		this.name = name;
 		this.number = number;
 		this.amount = amount;
@@ -22,11 +26,11 @@ public class Food {
 		this.experation = experation;
 	}
 	public FoodKind getKind() {
-		return Kind;
+		return kind;
 	}
 
 	public void setKind(FoodKind kind) {
-		Kind = kind;
+		this.kind = kind;
 	}
 
 	public String getName() {
@@ -68,31 +72,9 @@ public class Food {
 	public void setExperation(String experation) {
 		this.experation = experation;
 	}
-	public void printInfo() {
-		System.out.println("음식이름 :"+name+" 음식번호:"+ number+  "번 양:"+amount+ " 날짜:"+ date+" 유통기한:"+experation);
-	}
-	public void getUserInput(Scanner input) {
+	
+	public abstract void printInfo();
 		
-		System.out.print("음식번호 :");
-		int number = input.nextInt();
-		this.setNumber(number);
-		
-		System.out.print("음식이름 :");
-		String name = input.next();
-		this.setName(name);
-		
-		System.out.print("음식의 양:");
-		String amount = input.next();
-		this.setAmount(amount);
-		
-		System.out.print("넣은 날짜:");
-		String date = input.next();
-		this.setDate(date);
-		
-		System.out.print("유통기한 :");
-		String experation = input.next();
-		this.setExperation(experation);
-	}
 }	
 
 
