@@ -19,9 +19,9 @@ public class FoodManager {
 	}
 	
 	public void addfood() {
-		int kind = 0 ;
+		int num = 0 ;
 		FoodInput foodInput;
-		while(kind < 1 || kind > 5) {
+		while(num < 1 || num > 5) {
 			try {
 				System.out.println("1. 과일");
 				System.out.println("2. 음료");
@@ -29,32 +29,32 @@ public class FoodManager {
 				System.out.println("4. 국");
 				System.out.println("5. 통조림");
 				System.out.print("1,2,3,4,5번중 음식의 종류를 고르세요");
-				kind = input.nextInt();
-				if(kind == 1) {
+				num = input.nextInt();
+				if(num == 1) {
 					foodInput = new FruitFood(FoodKind.Fruit);
 					foodInput.getUserInput(input);
 					foods.add(foodInput);
 					break;
 				}
-				else if(kind == 2 ) {
+				else if(num == 2 ) {
 					foodInput = new DrinkFood(FoodKind.Drink);
 					foodInput.getUserInput(input);
 					foods.add(foodInput);
 					break;
 				}
-				else if(kind == 3 ) {
+				else if(num == 3 ) {
 					foodInput = new SidedishFood(FoodKind.Sidedish);
 					foodInput.getUserInput(input);
 					foods.add(foodInput);
 					break;
 				}
-				else if(kind == 4 ) {
+				else if(num == 4 ) {
 					foodInput = new SoupFood(FoodKind.Soup);
 					foodInput.getUserInput(input);
 					foods.add(foodInput);
 					break;
 				}
-				else if(kind == 5 ) {
+				else if(num == 5 ) {
 					foodInput = new CanFood(FoodKind.Can);
 					foodInput.getUserInput(input);
 					foods.add(foodInput);
@@ -67,9 +67,9 @@ public class FoodManager {
 			catch(InputMismatchException e) {
 				System.out.println("Please put an integer between 1 - 5 on kind");
 				if (input.hasNext()) {
-					input.hasNext();
+					input.next();
 				}
-				kind = -1;
+				num = -1;
 			}
 		}
 	}

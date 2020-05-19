@@ -64,7 +64,7 @@ public abstract class Food implements FoodInput {
 	}
 
 	public void setDate(String date) throws  DateFormatException {
-		if (!date.contains("년") && !date.equals("")){
+		if (!date.contains("년") && !date.equals("") ){
 			throw new DateFormatException();
 		}
 		this.date = date;
@@ -131,8 +131,8 @@ public abstract class Food implements FoodInput {
 			} catch (DateFormatException e) {
 				System.out.print("연도 도  정확히 기재해주세요.");
 			}
+		}
 	}
-}
 	public void setFoodExperation(Scanner input ) {
 		System.out.print("유통기한 :");
 		String experation = input.next();
