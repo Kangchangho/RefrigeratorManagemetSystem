@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 import Food.CanFood;
@@ -20,46 +21,55 @@ public class FoodManager {
 	public void addfood() {
 		int kind = 0 ;
 		FoodInput foodInput;
-		while(kind != 1 && kind !=2) {
-		System.out.println("1. 과일");
-		System.out.println("2. 음료");
-		System.out.println("3. 반찬");
-		System.out.println("4. 국");
-		System.out.println("5. 통조림");
-		System.out.print("1,2,3,4,5번중 음식의 종류를 고르세요");
-		kind = input.nextInt();
-			if(kind == 1) {
-				foodInput = new FruitFood(FoodKind.Fruit);
-				foodInput.getUserInput(input);
-				foods.add(foodInput);
-				break;
-			}
-			else if(kind == 2 ) {
-				foodInput = new DrinkFood(FoodKind.Drink);
-				foodInput.getUserInput(input);
-				foods.add(foodInput);
-				break;
-			}
-			else if(kind == 3 ) {
-				foodInput = new SidedishFood(FoodKind.Sidedish);
-				foodInput.getUserInput(input);
-				foods.add(foodInput);
-				break;
-			}
-			else if(kind == 4 ) {
-				foodInput = new SoupFood(FoodKind.Soup);
-				foodInput.getUserInput(input);
-				foods.add(foodInput);
-				break;
-			}
-			else if(kind == 5 ) {
-				foodInput = new CanFood(FoodKind.Can);
-				foodInput.getUserInput(input);
-				foods.add(foodInput);
-				break;
-			}
-			else {
+		while(kind < 1 || kind > 5) {
+			try {
+				System.out.println("1. 과일");
+				System.out.println("2. 음료");
+				System.out.println("3. 반찬");
+				System.out.println("4. 국");
+				System.out.println("5. 통조림");
 				System.out.print("1,2,3,4,5번중 음식의 종류를 고르세요");
+				kind = input.nextInt();
+				if(kind == 1) {
+					foodInput = new FruitFood(FoodKind.Fruit);
+					foodInput.getUserInput(input);
+					foods.add(foodInput);
+					break;
+				}
+				else if(kind == 2 ) {
+					foodInput = new DrinkFood(FoodKind.Drink);
+					foodInput.getUserInput(input);
+					foods.add(foodInput);
+					break;
+				}
+				else if(kind == 3 ) {
+					foodInput = new SidedishFood(FoodKind.Sidedish);
+					foodInput.getUserInput(input);
+					foods.add(foodInput);
+					break;
+				}
+				else if(kind == 4 ) {
+					foodInput = new SoupFood(FoodKind.Soup);
+					foodInput.getUserInput(input);
+					foods.add(foodInput);
+					break;
+				}
+				else if(kind == 5 ) {
+					foodInput = new CanFood(FoodKind.Can);
+					foodInput.getUserInput(input);
+					foods.add(foodInput);
+					break;
+				}
+				else {
+					System.out.print("1,2,3,4,5번중 음식의 종류를 고르세요");
+				}
+			}
+			catch(InputMismatchException e) {
+				System.out.println("Please put an integer between 1 - 5 on kind");
+				if (input.hasNext()) {
+					input.hasNext();
+				}
+				kind = -1;
 			}
 		}
 	}
@@ -105,19 +115,19 @@ public class FoodManager {
 					j = input.nextInt();
 					switch(j) {
 					case 1:
-						setFoodNumber(food, input);
+						food.setFoodNumber(input);
 						break;
 					case 2:
-						setFoodName(food, input );
+						food.setFoodName(input );
 						break;
 					case 3:
-						setFoodAmount(food, input );
+						food.setFoodAmount(input );
 						break;
 					case 4:
-						setFoodDate(food, input );
+						food.setFoodDate(input );
 						break;
 					case 5:
-						setFoodExperation(food, input );
+						food.setFoodExperation(input );
 						break;
 					default:
 					continue;
@@ -135,36 +145,7 @@ public class FoodManager {
 		
 	}
 	
-	public void setFoodNumber(FoodInput food,Scanner input ) {
-		System.out.print("음식번호 :");
-		int number = input.nextInt();
-		food.setNumber(number);
-		
-	}
-	public void setFoodName(FoodInput food,Scanner input ) {
-		System.out.print("음식이름 :");
-		String name = input.next();
-		food.setName(name);
-		
-	}
-	public void setFoodAmount(FoodInput food,Scanner input ) {
-		System.out.print("음식의 양:");
-		String amount = input.next();
-		food.setAmount(amount);
-		
-	}
-	public void setFoodDate(FoodInput food,Scanner input ) {
-		System.out.print("넣은 날짜:");
-		String date = input.next();
-		food.setDate(date);
-		
-	}
-	public void setFoodExperation(FoodInput food,Scanner input ) {
-		System.out.print("유통기한 :");
-		String experation = input.next();
-		food.setExperation(experation);
-		
-	}
+
 	public void showEditMenu() {
 		System.out.println("음식 정보 수정 메뉴");
 		System.out.println("1. 번호 수정");

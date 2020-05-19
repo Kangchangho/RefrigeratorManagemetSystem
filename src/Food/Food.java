@@ -2,7 +2,9 @@ package Food;
 
 import java.util.Scanner;
 
-public abstract class Food {
+import exception.DateFormatException;
+
+public abstract class Food implements FoodInput {
 	
 	protected FoodKind kind = FoodKind.Soup;
 	protected String name;
@@ -61,7 +63,10 @@ public abstract class Food {
 		return date;
 	}
 
-	public void setDate(String date) {
+	public void setDate(String date) throws  DateFormatException {
+		if (!date.contains("년") && !date.equals("")){
+			throw new DateFormatException();
+		}
 		this.date = date;
 	}
 
@@ -74,7 +79,66 @@ public abstract class Food {
 	}
 	
 	public abstract void printInfo();
+	
+	public String getKindString() {
+		String skind = "none";
+		switch(this.kind) { 
+		case Drink:
+			skind = "음료.";
+			break;
+		case Fruit:
+			skind = "과일.";
+			break;
+		case Sidedish:
+			skind = "반찬.";
+			break;
+		case Soup:	
+			skind = "국.";
+			break;
+		case Can:	
+			skind = "통조림.";
+			break;
+		default:	
+		}
+		return skind;
+	}
+	
+	public void setFoodNumber(Scanner input ) {
+		System.out.print("음식번호 :");
+		int number = input.nextInt();
+		this.setNumber(number);
 		
+	}
+	public void setFoodName(Scanner input ) {
+		System.out.print("음식이름 :");
+		String name = input.next();
+		this.setName(name);
+		
+	}
+	public void setFoodAmount(Scanner input ) {
+		System.out.print("음식의 양:");
+		String amount = input.next();
+		this.setAmount(amount);
+		
+	}
+	public void setFoodDate(Scanner input ) {
+		String date = "";
+		while(!date.contains("년")) {
+			System.out.print("넣은 날짜(년,월,일) :");
+			date = input.next();
+			try {
+				this.setDate(date);
+			} catch (DateFormatException e) {
+				System.out.print("연도 도  정확히 기재해주세요.");
+			}
+	}
+}
+	public void setFoodExperation(Scanner input ) {
+		System.out.print("유통기한 :");
+		String experation = input.next();
+		this.setExperation(experation);
+		
+	}
 }	
 
 

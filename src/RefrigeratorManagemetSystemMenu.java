@@ -1,3 +1,4 @@
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class RefrigeratorManagemetSystemMenu {
@@ -5,29 +6,43 @@ public class RefrigeratorManagemetSystemMenu {
 	public static void main(String[] args) {
 		Scanner input = new Scanner(System.in);
 		FoodManager foodManager = new FoodManager(input);
-		int i = -1;
 		
-		while (i != 5) {
-			showMenu();
-			i = input.nextInt();
-			switch(i) {
-			case 1:
-				foodManager.addfood();
-				break;
-			case 2:
-				foodManager.deletefood();
-				break;
-			case 3:
-				foodManager.editfood();
-				break;
-			case 4:
-				foodManager.veiwfoods();
-				break;	
-			default:
-				continue;
-			}
-		}
+		selectMenu(input , foodManager);
 	}
+	
+	public static void selectMenu(Scanner input, FoodManager foodManager ) {
+		int i = -1;
+		while (i != 5) {
+			try {
+				showMenu();
+				i = input.nextInt();
+				switch(i) {
+				case 1:
+					foodManager.addfood();
+					break;
+				case 2:
+					foodManager.deletefood();
+					break;
+				case 3:
+					foodManager.editfood();
+					break;
+				case 4:
+					foodManager.veiwfoods();
+					break;	
+				default:
+					continue;
+				}
+			}
+			catch(InputMismatchException e) {
+				System.out.println("Please put an integer between 1 - 5");
+				if (input.hasNext()) {
+					input.next();
+				}
+				i = -1;
+			}
+	}
+}
+	
 	public static void showMenu() {
 		System.out.println("Refrigerator Managemet System Menu");
 		System.out.println("1. Add food");
