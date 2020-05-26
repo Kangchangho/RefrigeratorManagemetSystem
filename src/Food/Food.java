@@ -1,10 +1,16 @@
 package Food;
 
+import java.io.Serializable;
 import java.util.Scanner;
 
 import exception.DateFormatException;
 
-public abstract class Food implements FoodInput {
+public abstract class Food implements FoodInput , Serializable {
+	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -3644500342207589166L;
 	
 	protected FoodKind kind = FoodKind.Soup;
 	protected String name;
