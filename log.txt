@@ -1,0 +1,2 @@
+5¿ù 26, 2020 4:28:54 ¿ÀÈÄ log.EventLogger log
+INFO: veiw a food
