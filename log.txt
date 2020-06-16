@@ -1,2 +1,2 @@
-5월 26, 2020 4:28:54 오후 log.EventLogger log
+6월 16, 2020 2:54:33 오후 log.EventLogger log
 INFO: veiw a food

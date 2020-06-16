@@ -6,6 +6,10 @@ import exception.DateFormatException;
 
 public interface FoodInput {
 	public int getNumber();
+	public String getName();
+	public String getAmount();
+	public String getDate();
+	public String getExperation();
 	public void setName(String name);
 	public void setNumber(int number);
 	public void setAmount(String amount);

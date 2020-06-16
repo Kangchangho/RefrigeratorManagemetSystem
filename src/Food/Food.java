@@ -65,7 +65,7 @@ public abstract class Food implements FoodInput , Serializable {
 		this.amount = amount;
 	}
 
-	public String getDate() {
+	public String getDate(){
 		return date;
 	}
 

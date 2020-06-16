@@ -1,3 +1,5 @@
+package manager;
+
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.InputMismatchException;
@@ -5,6 +7,7 @@ import java.util.Scanner;
 
 import Food.CanFood;
 import Food.DrinkFood;
+import Food.Food;
 import Food.FoodInput;
 import Food.FoodKind;
 import Food.FruitFood;
@@ -155,7 +158,13 @@ public class FoodManager implements Serializable {
 		
 	}
 	
-
+	public int size() {
+		return foods.size();
+	}
+	
+	public FoodInput get(int index) {
+		return (Food) foods.get(index);
+	}
 	public void showEditMenu() {
 		System.out.println("음식 정보 수정 메뉴");
 		System.out.println("1. 번호 수정");
